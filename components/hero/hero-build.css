@@ -1,5 +1,3 @@
-/* Scroll-built hero, full-bleed. Tall header, sticky .hb-pin; engine.ts writes --p (build progress 0-1) and
-   --exit (hand-off 0-1) on .hb, and toggles .is-live / .is-done. Change the palette via the --hb-* tokens. */
 .hb {
   --hb-lime: #CDDC39;
   --hb-ink: #141712;

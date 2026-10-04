@@ -7,6 +7,10 @@ import History from "../../components/History";
 import { projects } from "../../lib/site-data";
 import Intro from "@/components/Intro";
 import Values from "@/components/Values";
+import Founder from "@/components/Founder";
+import Care from "@/components/Care";
+import Careers from "@/components/Careers";
+import Contact from "@/components/navbar/Contact";
 
 export default function Home() {
   const featured = projects[0];
@@ -43,6 +47,10 @@ export default function Home() {
         <Projects />
         <History /> 
         <Values />
+        <Founder />
+        <Care />
+        <Careers />
+        <Contact />
       </div>
     </>
   );

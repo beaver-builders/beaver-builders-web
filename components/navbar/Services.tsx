@@ -22,7 +22,7 @@ function Row({ s }: { s: Service }) {
       <div className="svc-text">
         <h3><Ico id={s.icon} />{s.title}</h3>
         <p>{s.text}</p>
-        <Link className="chev" href={s.href}>{s.cta} <Chev /></Link>
+     <Link className="chev" href={s.href} data-service={s.service}>{s.cta} <Chev /></Link>
       </div>
     </article>
   );
