@@ -11,9 +11,6 @@ type Vec = number[];
 type Panel = { i: number; pts: Vec[]; n: Vec; kind: 'glass' | 'white' | 'dark'; lit: number; win?: Vec[] | null };
 type Palm = { x: number; z: number; h: number; lean: number; fr: number[] };
 
-// The scroll-built hero: a small perspective renderer (no library) draws a 10-storey block being built
-// as the visitor scrolls: 01 survey, 02 piling, 03 frame, 04 envelope, 05 handover at dusk.
-// Scroll position sets the target progress; the drawing eases towards it every frame.
 export function startBuildHero({ hero, canvas, monoFont = 'ui-monospace, monospace', onUi }: BuildOptions): () => void {
   const context = canvas.getContext('2d');
   if (!context) return () => {};

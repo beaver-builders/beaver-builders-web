@@ -4,7 +4,7 @@ import { facts } from '@/lib/site-data';
 
 export default function Intro() {
   return (
-    <section className="section wrap" id="about" aria-labelledby="profile-h">
+    <section className="section wrap" aria-labelledby="profile-h">
       <div className="intro">
         <div className="intro-copy">
           <h2 className="blocks" id="profile-h"><span>We are</span><span><em>Beaver</em> Builders</span></h2>

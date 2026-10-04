@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   let body: Record<string, unknown>;
   try { body = await req.json(); } catch { return NextResponse.json({ error: 'Invalid request.' }, { status: 400 }); }
 
-  if (clean(body.company, 50)) return NextResponse.json({ ok: true }); // honeypot filled: pretend success
+  if (clean(body.company, 50)) return NextResponse.json({ ok: true });
 
   const name = clean(body.name, 100);
   const email = clean(body.email, 150);

@@ -3,10 +3,10 @@ import Navbar from "../../components/Navbar";
 import Ticker from "../../components/navbar/Ticker";
 import Services from "../../components/navbar/Services";
 import Projects from "../../components/navbar/Projects";
-import About from "../../components/navbar/About";
-import Contact from "../../components/navbar/Contact";
+import History from "../../components/History";
 import { projects } from "../../lib/site-data";
 import Intro from "@/components/Intro";
+import Values from "@/components/Values";
 
 export default function Home() {
   const featured = projects[0];
@@ -28,7 +28,7 @@ export default function Home() {
         ctaLabel="View our projects"
         ctaHref="/#projects"
         handover={{
-          kicker: `${featured.status} · ${featured.place}`,
+          kicker: `${featured.statusLabel} · ${featured.place}`,
           title: featured.title,
           text: "The block above is drawn after this project, under construction now for the Ministry of Finance.",
           ctaLabel: "View our project",
@@ -41,8 +41,8 @@ export default function Home() {
         <Intro /> 
         <Services />
         <Projects />
-        <About />
-        <Contact />
+        <History /> 
+        <Values />
       </div>
     </>
   );
