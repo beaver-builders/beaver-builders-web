@@ -415,7 +415,7 @@ export function startBuildHero({ hero, canvas, monoFont = 'ui-monospace, monospa
     let level = 0; for (let i = 0; i < 10; i++) if (p >= frameWin(i)[1]) level = i + 1;
     const pct = Math.round(p * 100), done = p > 0.9;
     const key = `${Math.min(stage, 4)}|${level}|${pct}|${done}`;
-    if (key === lastKey) return; // only tell React when something visible changed
+    if (key === lastKey) return;
     lastKey = key;
     hero.classList.toggle('is-done', done);
     onUi({ stage: Math.min(stage, 4), level, pct, done });

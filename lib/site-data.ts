@@ -3,10 +3,10 @@ export const site = {
   tagline: 'Build better, shape tomorrow.',
   description: 'Beaver Builders: building with purpose, precision and quality.',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
-  email: 'info@beaver.mv',          
-  phone: '+960 778 3137',             
-  address: 'Your street, City',       
-  mapsUrl: '',                        
+  email: 'info@beaver.mv',
+  phone: '+960 778 3137',
+  addressLines: ['H. Fusthulhaamaage, 7th Floor', 'Ameeru Ahmed Magu', 'Malé 20030, Maldives'],
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Fusthulhaamaage%2C+Ameer+Ahmed+Magu%2C+Mal%C3%A9',
 };
 
 export const nav = [
@@ -21,6 +21,7 @@ export type IconName = 'building' | 'ruler' | 'house' | 'crane' | 'leaf' | 'shie
 export type Service = {
   title: string; icon: string; text: string; cta: string; href: string;
   image?: { src: string; alt: string; width: number; height: number };
+  service?: string;
   points?: string[];
 };
 
@@ -42,6 +43,7 @@ export const services: Service[] = [
   { title: 'Trading', icon: 'i-truck', cta: 'Request supplies', href: '/#contact',
     text: 'Sourcing and logistics for construction and engineering supplies, for our own sites and for other contractors.',
     image: { src: '/services 4.jpg', alt: 'Construction and engineering supplies', width: 1200, height: 800 } },
+    
 ];
 
 export type Role = 'direct' | 'sub' | 'via';
@@ -150,3 +152,7 @@ export const timeline: TimelineEvent[] = [
   { year: '2019', at: 2019, side: 'up', text: 'First direct awards from Fenaka; a sustainability policy follows in 2020.' },
   { year: 'Today', side: 'down', now: true, text: 'Social housing in Hithadhoo and the Velana seaplane terminal under way.' },
 ];
+
+
+export const careRoles = ['Site engineering', 'Project management', 'Quantity surveying', 'Logistics', 'Plant operation', 'Skilled trades'];
+export const serviceOptions = ['Not sure yet', 'Construction', 'Consultancy', 'Real estate', 'Equipment rental', 'Trading'];
