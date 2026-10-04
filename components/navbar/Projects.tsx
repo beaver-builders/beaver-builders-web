@@ -1,78 +1,107 @@
 'use client';
 
 import Image from 'next/image';
-import { useMemo, useRef, useState } from 'react';
-import { Project, projects, services } from '../../lib/site-data';
+import Link from 'next/link';
+import { useState } from 'react';
+import { projects, type Role } from '@/lib/site-data';
 
-const filters = ['All', 'Ongoing', 'Residential', 'Commercial', 'Public', 'Infrastructure'] as const;
+const roleLabel: Record<Role, string> = { direct: 'Direct award', sub: 'Subcontract', via: 'Via contractor' };
+const filters = [
+  { key: 'all', label: 'All projects' },
+  { key: 'resort', label: 'Resorts' },
+  { key: 'public', label: 'Government & public' },
+  { key: 'utilities', label: 'Utilities' },
+] as const;
+type Filter = (typeof filters)[number]['key'];
 
-function Media({ p, index }: { p: Project; index: number }) {
-  if (p.image) return <Image src={p.image} alt={`${p.title}, ${p.place}`} fill sizes="(max-width: 700px) 100vw, 33vw" style={{ objectFit: 'cover' }} />;
-  return <span className="pc-ph" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>;
-}
+const Chip = ({ status, label }: { status: string; label: string }) => (
+  <span className={`chip ${status}`}>{label} <i /></span>
+);
 
 export default function Projects() {
-  const [filter, setFilter] = useState<(typeof filters)[number]>('All');
-  const [active, setActive] = useState<Project | null>(null);
-  const dlg = useRef<HTMLDialogElement>(null);
+  const [filter, setFilter] = useState<Filter>('all');
+  const [ongoingOnly, setOngoingOnly] = useState(false);
+  const [view, setView] = useState<'cards' | 'table'>('cards');
 
-  const list = useMemo(() => projects.filter(p => filter === 'All' || p.sector === filter || p.status === filter), [filter]);
-  const open = (p: Project) => { setActive(p); dlg.current?.showModal(); };
+  const countOf = (f: Filter) => projects.filter(p => f === 'all' || p.tags.includes(f)).length;
+  const ongoingCount = projects.filter(p => p.status === 'ongoing').length;
+  const list = projects.filter(p => (filter === 'all' || p.tags.includes(filter)) && (!ongoingOnly || p.status === 'ongoing'));
 
   return (
-    <section className="section section--paper" id="projects">
-      <div className="wrap">
-        <p className="eyebrow"><b>02</b> Projects</p>
-        <div className="sec-head">
-          <h2 className="h2">Built by us</h2>
-          <div className="chips" role="group" aria-label="Filter projects">
-            {filters.map(f => (
-              <button key={f} type="button" className={`chip${f === filter ? ' on' : ''}`} aria-pressed={f === filter} onClick={() => setFilter(f)}>{f}</button>
-            ))}
-          </div>
-        </div>
+    <section className="section wrap" id="projects" aria-labelledby="projects-h">
+      <div className="section-head">
+        <h2 className="blocks" id="projects-h"><span>Project</span><span>register</span></h2>
+        <p>
+          Fifteen projects, from resort lagoons to island powerhouses. Work before 2016 was delivered by our current team
+          before incorporation, and every entry says whether we held the contract or worked under a main contractor.
+        </p>
+      </div>
 
-        <div className="pc-grid">
-          {list.map(p => (
-            <button key={p.slug} type="button" className="pc" onClick={() => open(p)} aria-label={`Open project: ${p.title}`}>
-              <span className="pc-media">
-                <Media p={p} index={projects.indexOf(p)} />
-                <span className={`pc-badge${p.status === 'Ongoing' ? ' live' : ''}`}>{p.status}</span>
-              </span>
-              <span className="pc-body">
-                <span className="pc-title">{p.title}</span>
-                <span className="pc-meta">{p.place} · {p.year}</span>
-                <span className="pc-sector">{p.sector}</span>
-              </span>
+      <div className="reg-controls">
+        <div className="filters" role="group" aria-label="Filter by sector">
+          {filters.map(f => (
+            <button key={f.key} type="button" className="filter" aria-pressed={filter === f.key} onClick={() => setFilter(f.key)}>
+              {f.label} <small>{countOf(f.key)}</small>
             </button>
           ))}
         </div>
-        {list.length === 0 && <p className="empty">No projects match this filter.</p>}
+        <button type="button" className="switch" aria-pressed={ongoingOnly} onClick={() => setOngoingOnly(o => !o)}>
+          <i aria-hidden="true" />Ongoing only <small>{ongoingCount}</small>
+        </button>
+        <div className="view-toggle" role="group" aria-label="View">
+          <button type="button" aria-pressed={view === 'cards'} onClick={() => setView('cards')}>Cards</button>
+          <button type="button" aria-pressed={view === 'table'} onClick={() => setView('table')}>Table</button>
+        </div>
       </div>
+      <p className="sr-only" aria-live="polite">{list.length} project{list.length === 1 ? '' : 's'} shown</p>
 
-      <dialog ref={dlg} className="pd" onClose={() => setActive(null)} onClick={e => { if (e.target === dlg.current) dlg.current?.close(); }} aria-labelledby="pd-title">
-        {active && (
-          <div className="pd-box">
-            <div className="pd-top">
-              <span className="pd-kicker">{active.status} · {active.sector}</span>
-              <button type="button" className="pd-close" onClick={() => dlg.current?.close()} aria-label="Close project">✕</button>
-            </div>
-            {active.image && (
-              <div className="pd-img"><Image src={active.image} alt="" fill sizes="720px" style={{ objectFit: 'cover' }} /></div>
-            )}
-            <h3 id="pd-title" className="pd-title">{active.title}</h3>
-            <p className="pd-place">{active.place} · {active.year}</p>
-            <p>{active.summary}</p>
-            <dl className="pd-facts">
-              <div><dt>Client</dt><dd>{active.client}</dd></div>
-              <div><dt>Status</dt><dd>{active.status}</dd></div>
-            </dl>
-            <h4>Scope</h4>
-            <ul>{active.scope.map(s => <li key={s}>{s}</li>)}</ul>
-            <a className="btn btn-ink" href="#contact" onClick={() => dlg.current?.close()}>Discuss a similar project</a>
-          </div>
-        )}
-      </dialog>
+      {view === 'cards' ? (
+        <div className="reg-grid">
+          {list.map(p => (
+            <Link key={p.slug} className="pcard" href={`/projects/${p.slug}`}>
+              <div className="ph">
+                <Image src={p.image.src} alt={p.title} width={p.image.width} height={p.image.height}
+                       sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" style={{ background: p.image.bg }} />
+                <Chip status={p.status} label={p.statusLabel} />
+              </div>
+              <div className="pc-body">
+                <span className="pc-meta">{p.place} · {p.when}</span>
+                <h3>{p.title}</h3>
+                <p>{p.client}</p>
+                <div className="pc-foot">
+                  <span className={`role ${p.role}`}>{roleLabel[p.role]}</span>
+                  {p.value && <span className="val">{p.value}</span>}
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className="ledger-wrap">
+          <table className="ledger">
+            <caption className="sr-only">Project register</caption>
+            <thead>
+              <tr>
+                <th scope="col">Project</th><th scope="col">Location</th><th scope="col">Client / main contractor</th>
+                <th scope="col">Role</th><th scope="col">Year</th><th scope="col">Value</th><th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {list.map(p => (
+                <tr key={p.slug}>
+                  <th scope="row"><Link href={`/projects/${p.slug}`}>{p.title}</Link></th>
+                  <td>{p.place}</td>
+                  <td>{p.client}</td>
+                  <td><span className={`role ${p.role}`}>{roleLabel[p.role]}</span></td>
+                  <td className="num">{p.when}</td>
+                  <td className="num">{p.value ?? '—'}</td>
+                  <td><Chip status={p.status} label={p.statusLabel} /></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </section>
   );
 }
