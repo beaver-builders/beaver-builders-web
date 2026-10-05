@@ -104,10 +104,10 @@ export const details: Record<string, Detail> = {
     roleNote: 'Awarded by Amin Constructions Pvt Ltd', duration: '8 months',
     statusText: 'Completed', sectorText: 'Government & public',
     gallery: [
-      { src: '/public/projects/fonadhoo-mosque-0.webp', width: 1532, height: 1151, bg: '#949a89' },
-      { src: '/public/projects/fonadhoo-mosque-1.webp', width: 1150, height: 864, bg: '#80837c' },
-      { src: '/public/projects/fonadhoo-mosque-2.webp', width: 1150, height: 864, bg: '#928f82' },
-      { src: '/public/projects/fonadhoo-mosque-3.webp', width: 1150, height: 864, bg: '#adadac' },
+      { src: '/projects/fonadhoo-mosque-0.webp', width: 1532, height: 1151, bg: '#949a89' },
+      { src: '/projects/fonadhoo-mosque-1.webp', width: 1150, height: 864, bg: '#80837c' },
+      { src: '/projects/fonadhoo-mosque-2.webp', width: 1150, height: 864, bg: '#928f82' },
+      { src: '/projects/fonadhoo-mosque-3.webp', width: 1150, height: 864, bg: '#adadac' },
     ],
   },
   'feydhoo-school': {
