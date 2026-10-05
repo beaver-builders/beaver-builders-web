@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useRef, useState, type MouseEvent } from 'react';
+import ProjectDrawer from '../ProjectDrawer';
 import { projects, type Role } from '@/lib/site-data';
 
 const roleLabel: Record<Role, string> = { direct: 'Direct award', sub: 'Subcontract', via: 'Via contractor' };
@@ -22,6 +23,21 @@ export default function Projects() {
   const [filter, setFilter] = useState<Filter>('all');
   const [ongoingOnly, setOngoingOnly] = useState(false);
   const [view, setView] = useState<'cards' | 'table'>('cards');
+    const [openSlug, setOpenSlug] = useState<string | null>(null);
+  const lastFocus = useRef<HTMLElement | null>(null);
+
+  const open = (e: MouseEvent<HTMLAnchorElement>, slug: string) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return; // let new-tab clicks through
+    e.preventDefault();
+    lastFocus.current = e.currentTarget;
+    setOpenSlug(slug);
+  };
+
+  // Deep link: /#p-<slug> opens that project's drawer on load.
+  useEffect(() => {
+    const m = location.hash.match(/^#p-([\w-]+)$/);
+    if (m && projects.some(p => p.slug === m[1])) { history.replaceState(null, '', '#projects'); setOpenSlug(m[1]); }
+  }, []);
 
   const countOf = (f: Filter) => projects.filter(p => f === 'all' || p.tags.includes(f)).length;
   const ongoingCount = projects.filter(p => p.status === 'ongoing').length;
@@ -58,7 +74,7 @@ export default function Projects() {
       {view === 'cards' ? (
         <div className="reg-grid">
           {list.map(p => (
-            <Link key={p.slug} className="pcard" href={`/projects/${p.slug}`}>
+            <Link key={p.slug} className="pcard" href={`/projects/${p.slug}`} onClick={e => open(e, p.slug)}>
               <div className="ph">
                 <Image src={p.image.src} alt={p.title} width={p.image.width} height={p.image.height}
                        sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw" style={{ background: p.image.bg }} />
@@ -89,7 +105,7 @@ export default function Projects() {
             <tbody>
               {list.map(p => (
                 <tr key={p.slug}>
-                  <th scope="row"><Link href={`/projects/${p.slug}`}>{p.title}</Link></th>
+                <th scope="row"><Link href={`/projects/${p.slug}`} onClick={e => open(e, p.slug)}>{p.title}</Link></th>
                   <td>{p.place}</td>
                   <td>{p.client}</td>
                   <td><span className={`role ${p.role}`}>{roleLabel[p.role]}</span></td>
@@ -102,6 +118,8 @@ export default function Projects() {
           </table>
         </div>
       )}
+
+       <ProjectDrawer slug={openSlug} onSelect={setOpenSlug} onClose={() => { setOpenSlug(null); lastFocus.current?.focus(); }} />
     </section>
   );
 }
