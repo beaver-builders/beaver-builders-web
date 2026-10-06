@@ -322,6 +322,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    WHITE CONTAINER
+  ======================================*/
 
 .founder-card {
   width: min(var(--max), calc(100% - 2 * var(--gutter)));
@@ -339,6 +340,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    HEADER
+=====================================*/
 
 .founder-header {
   display: flex;
@@ -392,6 +394,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    HEADER DIVIDER
+  ===========================================*/
 
 .founder-divider {
   width: 100%;
@@ -405,7 +408,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    FOUNDER CONTENT
-
+====================================*/
 .founder {
   display: grid;
 
@@ -421,6 +424,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    HEADING
+===================================*/
 
 .founder-heading {
   margin: 0;
@@ -459,7 +463,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    CONTENT
-
+==================================*/
 .founder-content {
   min-width: 0;
 }
@@ -491,7 +495,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    SIGNATURE
-
+=====================================*/
 .founder-signature {
   display: grid;
   gap: 4px;
@@ -525,7 +529,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    TABLET
-
+=====================================*/
 @media (max-width: 800px) {
 
   .founder-header {
@@ -851,4 +855,4 @@ button.chev.next { margin-left: auto; }
 .logo .brand-lockup { --h: 46px; }
 .footer .brand-lockup { --h: 72px; }
 .sign-bar .brand-lockup { --h: 44px; }
-.founder-brand .brand-lockup { --h: 56px; }}
+.founder-brand .brand-lockup { --h: 56px; }
