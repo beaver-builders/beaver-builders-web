@@ -322,6 +322,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    WHITE CONTAINER
+  ======================================*/
 
 .founder-card {
   width: min(var(--max), calc(100% - 2 * var(--gutter)));
@@ -339,6 +340,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    HEADER
+=====================================*/
 
 .founder-header {
   display: flex;
@@ -392,6 +394,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    HEADER DIVIDER
+  ===========================================*/
 
 .founder-divider {
   width: 100%;
@@ -405,7 +408,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    FOUNDER CONTENT
-
+====================================*/
 .founder {
   display: grid;
 
@@ -421,6 +424,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    HEADING
+===================================*/
 
 .founder-heading {
   margin: 0;
@@ -459,7 +463,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    CONTENT
-
+==================================*/
 .founder-content {
   min-width: 0;
 }
@@ -491,7 +495,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    SIGNATURE
-
+=====================================*/
 .founder-signature {
   display: grid;
   gap: 4px;
@@ -525,7 +529,7 @@ html { scrollbar-color: #9AA693 var(--page); }
 
 /* =========================================
    TABLET
-
+=====================================*/
 @media (max-width: 800px) {
 
   .founder-header {
