@@ -12,7 +12,7 @@ type Props = { slug: string | null; onSelect: (slug: string) => void; onClose: (
 
 export default function ProjectDrawer({ slug, onSelect, onClose }: Props) {
   const ref = useRef<HTMLDialogElement>(null);
-  const pushed = useRef(false); // did we add a history entry for the open drawer?
+  const pushed = useRef(false); 
 
   // Open / switch / close in response to `slug`; keep the URL hash (#p-<slug>) in sync.
   useEffect(() => {

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { projects, site } from '@/lib/site-data';
+import Brand from './Brand';
 
 const company = [
   { href: '/#about', label: 'Our history' },
@@ -21,7 +22,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="f-brand">
             <Link className="brand" href="/" aria-label={`${site.name}, home`}>
-              <Image src="/brand/logo.png" alt={site.name} width={2400} height={887} unoptimized />
+            <Brand />
             </Link>
             <p className="f-tag">Build green.<br />Craft dreams.</p>
             <p className="f-about">Construction, consultancy, real estate, equipment rental and trading across the Maldives.</p>
