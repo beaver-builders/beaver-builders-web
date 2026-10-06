@@ -7,7 +7,7 @@
   --body: var(--font-montserrat), 'Segoe UI', system-ui, sans-serif;
   --mono: var(--font-plex-mono), ui-monospace, Consolas, monospace;
   --gutter: clamp(16px, 2.2vw, 28px); --max: 1440px; --ease: cubic-bezier(.22, .61, .36, 1);
-  --shell: #1A1E18; --shell-top: #1A1E18; --shell-mid: #252B23; --shell-bottom: #343C31; --forest: #0E1A0B;;
+  --shell: #1A1E18; --shell-top: #1A1E18; --shell-mid: #252B23; --shell-bottom: #343C31; --forest: #0E1A0B;
 }
 
 
@@ -851,4 +851,4 @@ button.chev.next { margin-left: auto; }
 .logo .brand-lockup { --h: 46px; }
 .footer .brand-lockup { --h: 72px; }
 .sign-bar .brand-lockup { --h: 44px; }
-.founder-brand .brand-lockup { --h: 56px; }
+.founder-brand .brand-lockup { --h: 56px; }}
