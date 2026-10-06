@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { timeline } from '@/lib/site-data';
 
-// The tape is drawn to scale: 1990 at the left edge, 2027 at the right.
 const START = 1990, SPAN = 37;
 const pct = (year: number) => `${(((year - START) / SPAN) * 100).toFixed(2)}%`;
 const years = Array.from({ length: SPAN + 1 }, (_, i) => START + i);

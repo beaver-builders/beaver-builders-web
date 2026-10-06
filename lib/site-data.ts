@@ -7,6 +7,7 @@ export const site = {
   phone: '+960 778 3137',
   addressLines: ['H. Fusthulhaamaage, 7th Floor', 'Ameeru Ahmed Magu', 'Malé 20030, Maldives'],
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Fusthulhaamaage%2C+Ameer+Ahmed+Magu%2C+Mal%C3%A9',
+  logo: '/brand/logo.png',
 };
 
 export const nav = [
@@ -27,20 +28,20 @@ export type Service = {
 
 
 export const services: Service[] = [
-  { title: 'Construction', icon: 'i-trowel', cta: 'See the project register', href: '/#projects',
+  { title: 'Construction', icon: 'i-trowel', cta: 'Construction services', href: '/services/construction',
     text: 'From complex island resorts to single-storey utility buildings: structure, finishes and marine works, delivered to programme.',
     points: ['Resort and hospitality', 'Government and public buildings', 'Powerhouses and utility compounds', 'Breakwaters, revetments and dredging'],
     image: { src: '/consultancy.jpeg', alt: 'Construction work on site', width: 1150, height: 864 } },
-  { title: 'Consultancy', icon: 'i-pen-tool', cta: 'Ask about consultancy', href: '/#contact',
+  { title: 'Consultancy', icon: 'i-pen-tool', cta: 'Consultancy services', href: '/services/consultancy',
     text: 'Project management consultancy from qualified engineers: one clear view of cost, programme and quality.',
     image: { src: '/services 1.jpeg', alt: 'Project management consultancy on site', width: 722, height: 434 } },
-  { title: 'Real estate', icon: 'i-houses', cta: 'Talk to us', href: '/#contact',
+  { title: 'Real estate', icon: 'i-houses', cta: 'Real estate', href: '/services/real-estate',
     text: 'Development and management of key real-estate projects that add lasting value for local communities.',
     image: { src: '/services 3.jpg', alt: 'Real-estate development project', width: 1200, height: 800 } },
-  { title: 'Rentals', icon: 'i-crane-small', cta: 'Enquire about equipment', href: '/#contact',
-    text: 'Construction equipment for hire, serviced and maintained, to keep island projects moving.',
+  { title: 'Rentals', icon: 'i-crane-small', cta: 'Equipment rentals', href: '/services/rentals',
+    text: 'Rental and servicing of the construction equipment island projects depend on.',
     image: { src: '/services 2.JPG', alt: 'Construction equipment on site', width: 732, height: 548 } },
-  { title: 'Trading', icon: 'i-truck', cta: 'Request supplies', href: '/#contact',
+  { title: 'Trading', icon: 'i-truck', cta: 'Trading and supply', href: '/services/trading',
     text: 'Sourcing and logistics for construction and engineering supplies, for our own sites and for other contractors.',
     image: { src: '/services 4.jpg', alt: 'Construction and engineering supplies', width: 1200, height: 800 } },
     
@@ -51,7 +52,7 @@ export type Project = {
   slug: string; title: string; place: string;
   when: string;               // year shown on the card: 'Ongoing', '2016', '2018–2019'
   client: string; role: Role;
-  tags: string[];             // sector tags used by the register filters: resort | public | utilities (+ aviation, marine, education)
+  tags: string[];            
   status: 'ongoing' | 'complete' | 'started'; statusLabel: string; // statusLabel is the text on the badge
   value?: string;
   image: { src: string; width: number; height: number; bg: string }; // bg = placeholder colour while loading

@@ -1,3 +1,5 @@
+
+import Brand from '@/components/Brand';
 export default function Founder() {
   return (
     <section className="founder-wrap" aria-labelledby="founder-h">
@@ -7,6 +9,7 @@ export default function Founder() {
     <header className="founder-header">
 
       <div className="founder-brand">
+          <Brand onDark={false} />
         <img
           src="/brand/logo.png"
           alt="Beaver Builders"
