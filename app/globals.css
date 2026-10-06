@@ -317,7 +317,7 @@ html { scrollbar-color: #9AA693 var(--page); }
   width: 100%;
   padding-top: clamp(25px, 4vw, 45px);
   padding-bottom: 50px;
-}
+}}
 
 
 /* =========================================
