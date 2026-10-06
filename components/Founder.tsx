@@ -10,10 +10,6 @@ export default function Founder() {
 
       <div className="founder-brand">
           <Brand onDark={false} />
-        <img
-          src="/brand/logo.png"
-          alt="Beaver Builders"
-        />
       </div>
 
       <address className="founder-address">
