@@ -1,4 +1,3 @@
-
 :root {
   --page: #E6EBE3; --paper: #FFFFFF; --paper-soft: #F1F4EE;
   --ink: #141712; --ink-2: #2B3128; --muted: #59644F; --rule: #CBD5C4;
@@ -265,8 +264,6 @@ html { scrollbar-color: #9AA693 var(--page); }
   .value + .value { padding-left: 0; border-left: 0; border-top: 1px solid rgba(232, 238, 228, .16); }
 }
 
-/* ---------- founder: white card ---------- */
-
 /* =========================================
    FOUNDER OUTER
 ========================================= */
@@ -311,24 +308,76 @@ html { scrollbar-color: #9AA693 var(--page); }
 .founder-signature {display: grid;gap: 4px;margin-top: 42px;padding-top: 18px;border-top: 1px solid rgba(0, 0, 0, .14);}
 .founder-signature strong {margin: 0;font: 500 clamp(20px, 1.7vw, 24px)/1.05 var(--display);text-transform: uppercase;letter-spacing: .01em;color: var(--ink);}
 .founder-signature span {font: 500 11px/1.4 var(--mono);text-transform: uppercase;letter-spacing: .07em;color: var(--ink-2);}
+/* =========================================TABLET========================================= */
 
-@media (max-width: 800px) {
-  .founder-header { min-height: 125px; }
-  .founder-brand img { width: 160px; }
-  .founder-address { font-size: 11px; }
-  .founder { grid-template-columns: .8fr 1.2fr; gap: 35px; }
+@media (max-width: 800px) {.founder-header {min-height: 125px;}
+
+  .founder-brand img {
+    width: 160px;
+  }
+
+  .founder-address {
+    font-size: 11px;
+  }
+
+  .founder {
+    grid-template-columns: .8fr 1.2fr;
+    gap: 35px;
+  }
+
 }
+
+
+/* =========================================
+   MOBILE
+========================================= */
 
 @media (max-width: 640px) {
-  .founder-card { padding-left: 22px; padding-right: 22px; padding-bottom: 45px; }
-  .founder-brand img { width: 125px; max-height: 90px; }
-  .founder-header { min-height: 110px; gap: 20px; }
-  .founder-address { max-width: 170px; font-size: 9px; line-height: 1.4; text-align: right; }
-  .founder-divider { margin-bottom: 30px; }
-  .founder { grid-template-columns: 1fr; gap: 32px; }
-  .blocks.sm { font-size: 36px; }
-  .founder-content .founder-lead { font-size: 21px; }
+
+  .founder-card {
+    padding-left: 22px;
+    padding-right: 22px;
+    padding-bottom: 45px;
+  }
+
+  .founder-brand img {
+    width: 125px;
+    max-height: 90px;
+  }
+
+  .founder-header {
+    min-height: 110px;
+    gap: 20px;
+  }
+
+  .founder-address {
+    max-width: 170px;
+
+    font-size: 9px;
+    line-height: 1.4;
+
+    text-align: right;
+  }
+
+  .founder-divider {
+    margin-bottom: 30px;
+  }
+
+  .founder {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .blocks.sm {
+    font-size: 36px;
+  }
+
+  .founder-content .founder-lead {
+    font-size: 21px;
+  }
+
 }
+
 
 .care { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
 .care-media { position: relative; overflow: hidden; min-height: 420px; border-radius: 6px; }
