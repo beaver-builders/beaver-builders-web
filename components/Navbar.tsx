@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { nav, site } from '@/lib/site-data';
 import Image from 'next/image';
+import Brand from './Brand';
 
 export function Logo() {
   return (

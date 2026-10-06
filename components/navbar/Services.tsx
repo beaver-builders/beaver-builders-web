@@ -14,7 +14,7 @@ function Row({ s }: { s: Service }) {
     <article className="svc-row">
       <div className="svc-media">
         {s.image ? (
-          <Image src={s.image.src} alt={s.image.alt} width={s.image.width} height={s.image.height} sizes="160px" />
+          <Image src={s.image.src} alt={s.image.alt} width={2400} height={887} sizes="160px" />
         ) : (
           <div className="svc-tile"><Ico id={s.icon} className="" /></div>
         )}
@@ -22,7 +22,7 @@ function Row({ s }: { s: Service }) {
       <div className="svc-text">
         <h3><Ico id={s.icon} />{s.title}</h3>
         <p>{s.text}</p>
-     <Link className="chev" href={s.href} data-service={s.service}>{s.cta} <Chev /></Link>
+     <Link className="chev" href={s.href}>{s.cta} <Chev /></Link>
       </div>
     </article>
   );
