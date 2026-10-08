@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { services, type Service } from '@/lib/site-data';
+import type { Service } from '@/lib/types';
 
 const Chev = () => (
   <svg viewBox="0 0 22 12" aria-hidden="true"><use href="/icons.svg#chev" /></svg>
@@ -13,23 +13,24 @@ function Row({ s }: { s: Service }) {
   return (
     <article className="svc-row">
       <div className="svc-media">
-        {s.image ? (
-          <Image src={s.image.src} alt={s.image.alt} width={2400} height={887} sizes="160px" />
+        {s.homeImage ? (
+          <Image src={s.homeImage.src} alt={s.homeImage.alt} width={s.homeImage.width} height={s.homeImage.height} sizes="160px" />
         ) : (
           <div className="svc-tile"><Ico id={s.icon} className="" /></div>
         )}
       </div>
       <div className="svc-text">
-        <h3><Ico id={s.icon} />{s.title}</h3>
-        <p>{s.text}</p>
-     <Link className="chev" href={s.href}>{s.cta} <Chev /></Link>
+        <h3><Ico id={s.icon} /><Link href={`/services/${s.slug}`}>{s.title}</Link></h3>
+        <p>{s.homeText}</p>
+        <Link className="chev" href={`/services/${s.slug}`}>{s.homeCta} <Chev /></Link>
       </div>
     </article>
   );
 }
 
-export default function Services() {
+export default function Services({ services }: { services: Service[] }) {
   const [feature, ...rows] = services;
+  if (!feature) return null;
   return (
     <section id="services" aria-labelledby="services-h">
       <div className="shell services-shell dark">
@@ -44,18 +45,18 @@ export default function Services() {
 
         <div className="svc-layout">
           <article className="svc-feature">
-            {feature.image && (
-              <Image src={feature.image.src} alt={feature.image.alt} width={feature.image.width} height={feature.image.height}
+            {feature.homeImage && (
+              <Image src={feature.homeImage.src} alt={feature.homeImage.alt} width={feature.homeImage.width} height={feature.homeImage.height}
                      sizes="(max-width: 980px) 100vw, 46vw" />
             )}
             <div className="svc-feature-body">
-              <h3><Ico id={feature.icon} />{feature.title}</h3>
-              <p>{feature.text}</p>
-              <ul>{feature.points?.map(p => <li key={p}>{p}</li>)}</ul>
-              <Link className="chev" href={feature.href}>{feature.cta} <Chev /></Link>
+              <h3><Ico id={feature.icon} /><Link href={`/services/${feature.slug}`}>{feature.title}</Link></h3>
+              <p>{feature.homeText}</p>
+              <ul>{feature.homePoints.map(p => <li key={p}>{p}</li>)}</ul>
+              <Link className="chev" href={`/services/${feature.slug}`}>{feature.homeCta} <Chev /></Link>
             </div>
           </article>
-          <div className="svc-list">{rows.map(s => <Row key={s.title} s={s} />)}</div>
+          <div className="svc-list">{rows.map(s => <Row key={s.slug} s={s} />)}</div>
         </div>
       </div>
     </section>

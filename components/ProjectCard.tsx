@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Project } from '@/lib/site-data';
-import { roleLabel } from '@/lib/project-details';
+import { roleLabel, type Project } from '@/lib/types';
 
 /** Same card as the project register, as a plain link to /projects/<slug>. */
 export default function ProjectCard({ p }: { p: Project }) {

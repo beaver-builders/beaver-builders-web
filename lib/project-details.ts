@@ -63,7 +63,7 @@ export const details: Record<string, Detail> = {
   },
   'kandima-maldives': {
     summary: 'Fourteen blocks of beach villas, four rooms per block. Reinforced-concrete frame, columns and slabs with blockwork walls, taken through to finishes within the one-year subcontract.',
-    scope: ['14 beach-villa blocks, 56 rooms', 'RC structure, columns and slabs', 'Blockwork walls and full finishing'],
+    scope: ['12 villas 2 story  and 48 rooms', 'RC structure, columns and slabs', 'Blockwork walls and full finishing'],
     roleNote: 'Subcontract to Sas E Construction · delivered by the current Beaver team', duration: '1 year',
     statusText: 'Completed', sectorText: 'Resorts',
     gallery: [
