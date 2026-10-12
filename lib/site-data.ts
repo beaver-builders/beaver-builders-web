@@ -39,7 +39,7 @@ export type TimelineEvent = { year: string; at?: number; side: 'up' | 'down'; te
 export const timeline: TimelineEvent[] = [
   { year: '1992', at: 1992, side: 'up', text: 'Our core team starts work in Maldivian construction.' },
   { year: '2008', at: 2008, side: 'down', text: 'Informal operations begin, taking on specialist work.' },
-  { year: '2009', at: 2009, side: 'up', text: 'The team places 54 water villas at Six Senses Laamu.' },
+  { year: '2009', at: 2009, side: 'up', text: 'The team places 94 water villas at Six Senses Laamu.' },
   { year: '2016', at: 2016, side: 'down', text: 'Beaver Builders Pvt Ltd is incorporated (C-0629/2016).' },
   { year: '2019', at: 2019, side: 'up', text: 'First direct awards from Fenaka; a sustainability policy follows in 2020.' },
   { year: 'Today', side: 'down', now: true, text: 'Social housing in Hithadhoo under way.' },
