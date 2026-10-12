@@ -144,7 +144,7 @@ export default function QuoteForm() {
 
       {status && <p className={`form-status ${status.kind}`} role="status">{status.text}</p>}
       <div className="form-foot">
-        <small>Your request goes straight to our office in Malé. We use your details only to reply.</small>
+        <small>Send opens your email app with this request filled in, ready to send to our office. Or call +960 778 3137.</small>
         <button className="btn btn-lime" type="submit" disabled={sending}>{sending ? 'Sending…' : 'Send request'}</button>
       </div>
     </form>

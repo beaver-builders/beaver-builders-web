@@ -42,7 +42,7 @@ export const timeline: TimelineEvent[] = [
   { year: '2009', at: 2009, side: 'up', text: 'The team places 54 water villas at Six Senses Laamu.' },
   { year: '2016', at: 2016, side: 'down', text: 'Beaver Builders Pvt Ltd is incorporated (C-0629/2016).' },
   { year: '2019', at: 2019, side: 'up', text: 'First direct awards from Fenaka; a sustainability policy follows in 2020.' },
-  { year: 'Today', side: 'down', now: true, text: 'Social housing in Hithadhoo and the Velana seaplane terminal under way.' },
+  { year: 'Today', side: 'down', now: true, text: 'Social housing in Hithadhoo under way.' },
 ];
 
 // "Build green, craft dreams" panel

@@ -47,7 +47,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
       <div className="section-head">
         <h2 className="blocks" id="projects-h"><span>Project</span><span>register</span></h2>
         <p>
-          Fifteen projects, from resort lagoons to island powerhouses. Work before 2016 was delivered by our current team
+          Fourteen projects, from resort lagoons to island powerhouses. Work before 2016 was delivered by our current team
           before incorporation, and every entry says whether we held the contract or worked under a main contractor.
         </p>
       </div>
