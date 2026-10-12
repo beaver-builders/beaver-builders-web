@@ -11,7 +11,6 @@ import Care from "@/components/Care";
 import Careers from "@/components/Careers";
 import Contact from "@/components/navbar/Contact";
 import Projects from "@/components/navbar/Projects";
-import Footer from "@/components/Footer";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -64,7 +63,6 @@ export default async function Home() {
         <Care />
         <Careers />
         <Contact />
-        <Footer projects={projects} />
       </div>
     </>
   );

@@ -8,7 +8,7 @@ export type Img = { src: string; width: number; height: number; bg: string };
 export type Project = {
   slug: string; title: string; place: string;
   when: string;               // year shown on the card: 'Ongoing', '2016', '2018–2019'
-  client: string; role: Role;
+  client: string; role: Role; 
   tags: string[];             // register filters: resort | public | utilities (+ aviation, marine, education)
   status: 'ongoing' | 'complete' | 'started'; statusLabel: string;
   value?: string;

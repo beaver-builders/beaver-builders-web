@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from 'next';
 import { Oswald, IBM_Plex_Mono, Montserrat } from 'next/font/google';
 import './globals.css';
 import { site } from '../lib/site-data';
+import Footer from '@/components/Footer';
+import { getProjects } from '@/lib/data';
+import type { Project } from '@/lib/types';
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -43,11 +46,19 @@ export const viewport: Viewport = {
   themeColor: '#1A1E18',
 };
 
-export default function RootLayout({
+export const dynamic = 'force-dynamic'; // pages are rendered on request, so the build never needs the database
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  let projects: Project[] = [];
+  try {
+    projects = await getProjects();
+  } catch {
+  }
+
   return (
     <html
       lang="en"
@@ -59,6 +70,7 @@ export default function RootLayout({
         </a>
 
         <main id="main">{children}</main>
+        <Footer projects={projects} />
       </body>
     </html>
   );
