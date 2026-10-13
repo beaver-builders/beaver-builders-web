@@ -1,0 +1,21 @@
+/* ---------- project gallery (arrows, step badge, numbered thumbs) ---------- */
+.gallery .main { position: relative; }
+
+.step-badge { position: absolute; top: 12px; left: 12px; padding: 6px 12px; border-radius: 999px;
+  background: rgba(0, 0, 0, .65); color: #fff; font-size: 13px; letter-spacing: .02em; backdrop-filter: blur(4px); }
+.step-badge.done { background: #1a7f4b; }
+
+.g-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 50%;
+  border: 0; background: rgba(255, 255, 255, .9); color: #111; display: grid; place-items: center; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .25); transition: opacity .2s, transform .2s; }
+.g-arrow svg { width: 16px; height: 16px; }
+.g-arrow.prev { left: 12px; }
+.g-arrow.next { right: 12px; }
+.g-arrow:hover:not(:disabled) { transform: translateY(-50%) scale(1.08); }
+.g-arrow:disabled { opacity: .35; cursor: default; }
+
+.thumbs button { position: relative; }
+.thumbs button[aria-current="true"] { outline: 2px solid #1a7f4b; outline-offset: 2px; }
+.thumbs .tn { position: absolute; left: 4px; bottom: 4px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px;
+  background: rgba(0, 0, 0, .7); color: #fff; font-size: 11px; display: grid; place-items: center; }
+.thumbs button:last-child .tn { background: #1a7f4b; }

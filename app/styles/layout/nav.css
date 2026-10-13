@@ -1,0 +1,21 @@
+/* ---------- nav (hero overlay + fixed bar) ---------- */
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font: 500 22px/1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
+.logo b { color: var(--lime); font-weight: 500; margin-left: .3em; }
+.nav { display: flex; align-items: center; gap: 24px; color: var(--on-dark); }
+.nav--hero { position: absolute; z-index: 8; inset: 20px 24px auto 24px; }
+.nav--bar { position: fixed; z-index: 60; inset: 0 0 auto 0; padding: 10px max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
+  background: rgba(20, 23, 18, .92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transform: translateY(-100%); visibility: hidden; transition: transform .35s var(--ease), visibility 0s .35s; }
+.nav--bar.is-shown { transform: none; visibility: visible; transition: transform .35s var(--ease), visibility 0s; }
+.nav-links { display: flex; gap: 28px; margin: 0 0 0 auto; padding: 0; list-style: none; }
+.nav-links a { text-decoration: none; font: 500 13px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 8px 0; border-bottom: 1px solid transparent; }
+.nav-links a:hover { border-color: var(--lime); }
+.nav-toggle { display: none; margin-left: auto; background: transparent; color: var(--on-dark); border: 1px solid rgba(232, 238, 228, .35); border-radius: 2px; padding: 10px 14px; cursor: pointer; font: 500 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.nav-menu { position: absolute; top: calc(100% + 8px); left: 0; right: 0; display: grid; padding: 8px; border-radius: 6px; background: rgba(20, 23, 18, .97); border: 1px solid rgba(232, 238, 228, .14); }
+.nav-menu a { padding: 14px 12px; text-decoration: none; font: 500 13px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; border-bottom: 1px solid rgba(232, 238, 228, .08); }
+.nav-menu a:last-child { border: 0; color: var(--lime); }
+@media (max-width: 860px) {
+  .nav-links, .nav-cta { display: none; } .nav-toggle { display: block; }
+  .nav--hero { inset: 16px 16px auto 16px; }
+}
+@media (min-width: 861px) { .nav-menu { display: none !important; } }

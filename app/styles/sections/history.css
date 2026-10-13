@@ -1,0 +1,26 @@
+/* ---------- history + timeline tape ---------- */
+.history-sec { padding-top: 0; }
+.history { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+.history img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 6px; filter: grayscale(1) contrast(1.05); }
+.history-copy { display: grid; gap: 18px; justify-items: start; }
+.history-copy p { margin: 0; max-width: 58ch; color: var(--ink-2); }
+.tape { position: relative; margin-top: clamp(48px, 6vw, 80px); }
+.tape-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 8px; }
+.tape-inner { position: relative; min-width: 1120px; height: 260px; }
+.tape-bar { position: absolute; left: 0; right: 0; top: 110px; height: 34px; border-radius: 3px; background: var(--lime); box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .12); }
+.tape-bar .ticks { position: absolute; inset: 0; }
+.tape-bar .t { position: absolute; top: 0; width: 1px; height: 10px; background: var(--ink); }
+.tape-bar .t.major { width: 1.5px; height: 18px; }
+.tape-bar .lbl { position: absolute; top: 18px; transform: translateX(-50%); font: 500 11px/1 var(--mono); color: var(--ink); font-variant-numeric: tabular-nums; }
+.ev { position: absolute; width: 150px; display: grid; gap: 4px; padding-left: 10px; border-left: 1.5px solid var(--ink); font-size: 13px; line-height: 1.4; color: var(--ink-2); }
+.ev b { font: 500 22px/1 var(--display); color: var(--ink); }
+.ev.up { bottom: 158px; }
+.ev.down { top: 154px; }
+.ev.now b { color: var(--ink-green); }
+@media (max-width: 980px) { .history { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { /* timeline becomes a stacked list on phones */
+  .tape-scroll { overflow: visible; }
+  .tape-inner { min-width: 0; height: auto; display: grid; gap: 18px; padding-left: 16px; border-left: 4px solid var(--lime); }
+  .tape-bar { display: none; }
+  .ev, .ev.up, .ev.down { position: static; width: auto; padding: 0; border: 0; }
+}

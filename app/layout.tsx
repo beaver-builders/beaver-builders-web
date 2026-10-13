@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Oswald, IBM_Plex_Mono, Montserrat } from 'next/font/google';
-import './globals.css';
+import './styles/index.css';
 import { site } from '../lib/site-data';
 import Footer from '@/components/Footer';
 import { getProjects } from '@/lib/data';

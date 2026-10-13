@@ -1,0 +1,33 @@
+/* ---------- footer ---------- */
+.brand { display: block; flex: none; color: #fff; }
+.brand img { display: block; width: auto; height: auto; max-width: 100%; }
+.footer { position: relative; z-index: 3; margin-top: clamp(72px, 9vw, 128px); padding-block: clamp(56px, 6vw, 80px) 28px; background: var(--ink); color: var(--on-dark-muted); }
+main:has(.page) + .footer { margin-top: 0; }
+.footer a { color: var(--on-dark); text-decoration: none; transition: color .15s var(--ease); }
+.footer a:hover { color: var(--lime); }
+.footer-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)); gap: 40px clamp(24px, 3vw, 48px); align-items: start; }
+.f-brand { display: grid; gap: 22px; align-content: start; }
+.f-brand .brand img { height: 96px; width: auto; }
+.f-tag { margin: 0; font: 500 clamp(28px, 2.6vw, 38px)/1 var(--display); text-transform: uppercase; color: #F2F6EF; }
+.f-about { margin: 0; max-width: 34ch; font-size: 14px; line-height: 1.6; }
+.f-col { display: grid; gap: 14px; align-content: start; }
+.fh { margin: 0; padding-bottom: 12px; border-bottom: 1px solid rgba(232, 238, 228, .14); font: 500 12px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--green); }
+.f-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 15px; }
+.f-big { font: 500 22px/1.15 var(--display); letter-spacing: .01em; }
+.f-contact address { margin-top: 4px; font-style: normal; font-size: 14px; line-height: 1.6; }
+/* same columns as .footer-grid, so each fact sits under a column */
+.f-sheet { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)); column-gap: clamp(24px, 3vw, 48px); margin: clamp(48px, 5vw, 72px) 0 0; border-block: 1px solid rgba(232, 238, 228, .14); }
+.f-sheet > div { min-width: 0; padding: 14px 0 16px; }
+.f-sheet dt { font: 500 12px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark-muted); }
+.f-sheet dd { margin: 6px 0 0; font: 500 17px/1.2 var(--display); text-transform: uppercase; letter-spacing: .02em; color: var(--on-dark); font-variant-numeric: tabular-nums; }
+@media (max-width: 980px) {
+  .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .f-brand { grid-column: 1 / -1; grid-template-columns: auto 1fr; align-items: end; gap: 16px 40px; }
+  .f-about { grid-column: 1 / -1; }
+  .f-sheet { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .f-brand { grid-template-columns: 1fr; }
+  .f-contact { grid-column: 1 / -1; }
+}

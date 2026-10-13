@@ -1,0 +1,11 @@
+:root {
+  --page: #E6EBE3; --paper: #FFFFFF; --paper-soft: #F1F4EE;
+  --ink: #141712; --ink-2: #2B3128; --muted: #59644F; --rule: #CBD5C4; --hairline: #CBD5C4;
+  --shell: #1A1E18; --on-dark: #E8EEE4; --on-dark-muted: #A8B3A1;
+  --green: #5AB947; --lime: #CDDC39; --ink-green: #2F6B22;
+  --display: var(--font-oswald), 'Arial Narrow', sans-serif;
+  --body: var(--font-montserrat), 'Segoe UI', system-ui, sans-serif;
+  --mono: var(--font-plex-mono), ui-monospace, Consolas, monospace;
+  --gutter: clamp(16px, 2.2vw, 28px); --max: 1440px; --ease: cubic-bezier(.22, .61, .36, 1);
+  --shell-top: #1A1E18; --shell-mid: #252B23; --shell-bottom: #343C31; --forest: #0E1A0B;
+}
