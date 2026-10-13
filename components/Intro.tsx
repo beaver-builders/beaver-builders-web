@@ -24,18 +24,19 @@ export default function Intro() {
               <path d="M1 1l7 5-7 5z" fill="currentColor" />
               <path d="M12.5 1.5l6 4.5-6 4.5z" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
             </svg>
-          </Link>
-        </div>
+                    </Link>
 
-        <div className="intro-media">
           <dl className="titleblock">
             {facts.map(f => (
               <div key={f.label}><dt>{f.label}</dt><dd>{f.value}<small>{f.note}</small></dd></div>
             ))}
           </dl>
+        </div>
+
+        <div className="intro-media">
           <Image
-            src="/we-are-beaver-builders.jpg" width={1150} height={864} sizes="(max-width: 980px) 100vw, 45vw"
-            alt="Water villa frames rising over the lagoon at Six Senses Laamu" style={{ background: '#748a95' }}
+            src="/we-are -beaver-builders updated.jpg" width={2016} height={2118} sizes="(max-width: 980px) 100vw, 45vw"
+            alt="Beaver Builders hard hat held by a site worker in hi-vis" style={{ background: '#748a95' }}
           />
         </div>
       </div>
