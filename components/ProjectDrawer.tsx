@@ -63,25 +63,41 @@ export default function ProjectDrawer({ projects, slug, onSelect, onClose }: Pro
 }
 
 function DrawerBody({ p, next, onSelect, onDiscuss }: { p: Project; next: Project; onSelect: (s: string) => void; onDiscuss: (e: MouseEvent) => void }) {
-  const [n, setN] = useState(0);
+    const photos = [...p.gallery.slice(1), p.gallery[0]];
+  const [n, setN] = useState(photos.length - 1);
   const facts: [string, string | undefined][] = [
     ['Client', p.client], ['Role', roleLabel[p.role]], ['Location', p.place], ['Year', p.when],
     ['Duration', p.duration], ['Status', p.statusText], ['Contract value', p.value],
   ];
-  const g = p.gallery[n];
-
+     const g = photos[n];
+  const last = photos.length - 1;
+  const isDone = n === last;
+  const label = isDone ? 'Completed' : `Step ${n + 1} of ${last}`;
+  const go = (d: number) => setN(i => Math.min(last, Math.max(0, i + d)));
   return (
     <div className="dr-body">
       <div className="gallery">
         <div className="main">
-          <Image key={g.src} src={g.src} width={g.width} height={g.height} alt={p.title}
+                   <Image key={g.src} src={g.src} width={g.width} height={g.height} alt={`${p.title}, ${label}`}
                  sizes="(max-width: 820px) 100vw, 780px" style={{ background: g.bg }} priority />
+          {photos.length > 1 && (
+            <>
+        {isDone && <span className="step-badge done">Completed ✓</span>}
+              <button type="button" className="g-arrow prev" aria-label="Previous step" disabled={n === 0} onClick={() => go(-1)}>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
+              </button>
+              <button type="button" className="g-arrow next" aria-label="Next step" disabled={isDone} onClick={() => go(1)}>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
+              </button>
+            </>
+          )}
         </div>
-        {p.gallery.length > 1 && (
+                {photos.length > 1 && (
           <div className="thumbs" role="group" aria-label="Photos">
-            {p.gallery.map((im, i) => (
-              <button key={im.src} type="button" aria-label={`Photo ${i + 1} of ${p.gallery.length}`} aria-current={i === n} onClick={() => setN(i)}>
+            {photos.map((im, i) => (
+              <button key={im.src} type="button" aria-label={i === photos.length - 1 ? 'Completed photo' : `Step ${i + 1} of ${photos.length - 1}`} aria-current={i === n} onClick={() => setN(i)}>
                 <Image src={im.src} width={im.width} height={im.height} alt="" sizes="92px" style={{ background: im.bg }} />
+                <span className="tn" aria-hidden="true">{i === last ? '✓' : i + 1}</span>
               </button>
             ))}
           </div>
