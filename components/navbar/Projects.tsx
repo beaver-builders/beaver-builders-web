@@ -14,6 +14,12 @@ const filters = [
 ] as const;
 type Filter = (typeof filters)[number]['key'];
 
+const numberWords = [
+  'Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten',
+  'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty',
+];
+const countWord = (n: number) => numberWords[n] ?? String(n); // 21+ shows as digits
+
 const Chip = ({ status, label }: { status: string; label: string }) => (
   <span className={`chip ${status}`}>{label} <i /></span>
 );
@@ -47,7 +53,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
       <div className="section-head">
         <h2 className="blocks" id="projects-h"><span>Project</span><span>register</span></h2>
         <p>
-          Fourteen projects, from resort lagoons to island powerhouses. Work before 2016 was delivered by our current team
+         {countWord(projects.length)} project{projects.length === 1 ? '' : 's'}, from resort lagoons to island powerhouses. Work before 2016 was delivered by our current team
           before incorporation, and every entry says whether we held the contract or worked under a main contractor.
         </p>
       </div>
