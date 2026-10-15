@@ -2,7 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { facts } from '@/lib/site-data';
 
-export default function Intro() {
+export default function Intro({ projectCount }: { projectCount?: number }) {
+  // "Project register" follows the number of published projects in Supabase; the other facts stay as written in site-data.ts
+  const items = facts.map(f =>
+    f.label === 'Project register' && projectCount !== undefined ? { ...f, value: String(projectCount) } : f,
+  );
   return (
     <section className="section wrap" aria-labelledby="profile-h">
       <div className="intro">
@@ -27,7 +31,7 @@ export default function Intro() {
                     </Link>
 
           <dl className="titleblock">
-            {facts.map(f => (
+            {items.map(f => (
               <div key={f.label}><dt>{f.label}</dt><dd>{f.value}<small>{f.note}</small></dd></div>
             ))}
           </dl>

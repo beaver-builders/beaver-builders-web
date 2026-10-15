@@ -54,7 +54,7 @@ export default async function Home() {
 
       <div id="after" className="hb-after">
         <Ticker />
-        <Intro />
+       <Intro projectCount={projects.length} />
         <Services services={services} />
         <Projects projects={projects} />
         <History />
