@@ -18,7 +18,7 @@ export default function Intro({ projectCount }: { projectCount?: number }) {
           </p>
           <p>
             Our core team has worked in Maldivian construction since 1992. We began taking work in 2008, incorporated as
-            Beaver Builders Pvt Ltd in 2016, and have grown from a specialist subcontractor into a established contractor
+            Beaver Builders Pvt Ltd in 2016, and have grown from a specialist subcontractor into an established contractor
             trusted with government tenders, utility infrastructure and resort development.
           </p>
           {/* point this at your history page/section when you have one */}

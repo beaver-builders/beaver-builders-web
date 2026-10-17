@@ -5,7 +5,7 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
   email: 'info@beaver.mv',
   phone: '+960 778 3137',
-  addressLines: ['H. Fusthulhaamaage, 7th Floor', 'Ameeru Ahmed Magu', 'Malé 20030, Maldives'],
+  addressLines: ['7th Floor', 'Fusthulhaamaage Ameer Ahmed Magu 20030', 'Malé City', 'Maldives'],
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Fusthulhaamaage%2C+Ameer+Ahmed+Magu%2C+Mal%C3%A9',
   logo: '/brand/logo.png',
 };
@@ -27,7 +27,7 @@ export const clients = [
 export const facts = [
   { label: 'Company reg.', value: 'C-0629', note: 'Incorporated 2016' },
   { label: 'Team experience', value: '34 years', note: 'On site since 1992' },
-  { label: 'Head office', value: 'Malé', note: 'Ameeru Ahmed Magu' },
+  { label: 'Head office', value: 'Malé', note: 'Ameer Ahmed Magu' },
   { label: 'Disciplines', value: '5', note: 'Under one roof' },
   { label: 'Project register', value: '15', note: 'Addu to Noonu' },
   { label: 'Largest live contract', value: 'MVR 214.8m', note: 'Social housing' },
