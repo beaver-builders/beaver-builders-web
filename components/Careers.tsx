@@ -9,7 +9,7 @@ export default function Careers() {
           <h2 className="blocks sm" id="careers-h"><span>Join</span><span>Team Beaver</span></h2>
           <p>
             Our core team brings qualified experience in construction, project management, engineering, logistics,
-            trading and real estate. We keep adding to it with capable people who bring their own skills and energy.
+            trading and real estate. We continue to grow our team by welcoming capable people who bring their skills and energy.
           </p>
           <ul className="disciplines" aria-label="Disciplines we hire for">
             {careRoles.map(r => <li className="chip" key={r}>{r}</li>)}

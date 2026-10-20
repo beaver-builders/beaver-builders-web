@@ -178,9 +178,9 @@ export default function About() {
               <p>
                 Beaver Builders Pvt Ltd
                 <br />
-                H. Luthufihmage, 7th Floor
+                H. Fusthulhaamaage, 7th Floor
                 <br />
-                Ameenee Ahmed Magu
+                Ameer Ahmed Magu
                 <br />
                 Malé 20380, Maldives
               </p>

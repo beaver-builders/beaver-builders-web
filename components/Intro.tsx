@@ -13,8 +13,7 @@ export default function Intro({ projectCount }: { projectCount?: number }) {
         <div className="intro-copy">
           <h2 className="blocks" id="profile-h"><span>We are</span><span><em>Beaver</em> Builders</span></h2>
           <p className="lede">
-            The beaver is nature’s most industrious builder. We bring the same commitment to every project we take on:
-            precise, dedicated and finished on time.
+            The beaver is nature’s most industrious builder. We bring the same commitment to every project we undertake: precision, dedication, and timely delivery.
           </p>
           <p>
             Our core team has worked in Maldivian construction since 1992. We began taking work in 2008, incorporated as
