@@ -1,0 +1,15 @@
+/* one logo file, shown white on dark backgrounds and black on the white card */
+.footer .brand img,
+.sign-bar img { filter: brightness(0) invert(1); }
+.founder-brand img { filter: brightness(0); }
+
+/* ---------- brand lockup: logo mark + live text ---------- */
+.brand-lockup { --h: 44px; display: inline-flex; align-items: center; gap: calc(var(--h) * .28); }
+.brand-lockup img { display: block; flex: none; height: var(--h); width: auto; }
+.brand-name { display: grid; font: 500 calc(var(--h) * .38)/1.05 var(--display); text-transform: uppercase; letter-spacing: .08em; }
+.brand-lockup.on-dark { color: #fff; }
+.brand-lockup.on-light { color: var(--ink); }
+.logo .brand-lockup { --h: 46px; }
+.footer .brand-lockup { --h: 72px; }
+.sign-bar .brand-lockup { --h: 44px; }
+.founder-brand .brand-lockup { --h: 56px; }

@@ -10,15 +10,11 @@ export default function Founder() {
 
       <div className="founder-brand">
           <Brand onDark={false} />
-        <img
-          src="/brand/logo.png"
-          alt="Beaver Builders"
-        />
       </div>
 
       <address className="founder-address">
-        H. Fushthulhaamage, 7th Floor<br />
-        Ameeru Ahmed Magu, Malé 20030
+        H. Fusthulhaamaage, 7th Floor<br />
+        Ameer Ahmed Magu, Malé 20030
       </address>
 
     </header>

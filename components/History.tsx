@@ -17,7 +17,7 @@ export default function History() {
           <h2 className="blocks" id="about-h"><span>Our</span><span>history</span></h2>
           <p>Our core team has been in the construction industry since 1992, and we began taking on work informally in 2008.</p>
           <p>
-            Since incorporating Beaver Builders Pvt Ltd in 2016, we have grown from a humble subcontractor into a turnkey
+            Since incorporating Beaver Builders Pvt Ltd in 2016, we have grown from a humble subcontractor into an established
             contractor working to modern practice, and we now compete for major government tenders.
           </p>
           <p>In 2020 we committed to sustainable construction, and we kept every project moving through the challenges of the COVID years.</p>

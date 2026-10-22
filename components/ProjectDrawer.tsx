@@ -3,16 +3,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState, type MouseEvent } from 'react';
-import { projects, type Project } from '@/lib/site-data';
-import { details, roleLabel } from '../lib/project-details';
+import { roleLabel, type Project } from '@/lib/types';
 
 const Chev = () => <svg viewBox="0 0 22 12" aria-hidden="true"><use href="/icons.svg#chev" /></svg>;
 
-type Props = { slug: string | null; onSelect: (slug: string) => void; onClose: () => void };
+type Props = { projects: Project[]; slug: string | null; onSelect: (slug: string) => void; onClose: () => void };
 
-export default function ProjectDrawer({ slug, onSelect, onClose }: Props) {
+export default function ProjectDrawer({ projects, slug, onSelect, onClose }: Props) {
   const ref = useRef<HTMLDialogElement>(null);
-  const pushed = useRef(false); 
+  const pushed = useRef(false); // did we add a history entry for the open drawer?
 
   // Open / switch / close in response to `slug`; keep the URL hash (#p-<slug>) in sync.
   useEffect(() => {
@@ -64,26 +63,41 @@ export default function ProjectDrawer({ slug, onSelect, onClose }: Props) {
 }
 
 function DrawerBody({ p, next, onSelect, onDiscuss }: { p: Project; next: Project; onSelect: (s: string) => void; onDiscuss: (e: MouseEvent) => void }) {
-  const d = details[p.slug];
-  const [n, setN] = useState(0);
+    const photos = [...p.gallery.slice(1), p.gallery[0]];
+  const [n, setN] = useState(photos.length - 1);
   const facts: [string, string | undefined][] = [
     ['Client', p.client], ['Role', roleLabel[p.role]], ['Location', p.place], ['Year', p.when],
-    ['Duration', d.duration], ['Status', d.statusText], ['Contract value', p.value],
+    ['Duration', p.duration], ['Status', p.statusText], ['Contract value', p.value],
   ];
-  const g = d.gallery[n];
-
+     const g = photos[n];
+  const last = photos.length - 1;
+  const isDone = n === last;
+  const label = isDone ? 'Completed' : `Step ${n + 1} of ${last}`;
+  const go = (d: number) => setN(i => Math.min(last, Math.max(0, i + d)));
   return (
     <div className="dr-body">
       <div className="gallery">
         <div className="main">
-          <Image key={g.src} src={g.src} width={g.width} height={g.height} alt={p.title}
+                   <Image key={g.src} src={g.src} width={g.width} height={g.height} alt={`${p.title}, ${label}`}
                  sizes="(max-width: 820px) 100vw, 780px" style={{ background: g.bg }} priority />
+          {photos.length > 1 && (
+            <>
+        {isDone && <span className="step-badge done">Completed ✓</span>}
+              <button type="button" className="g-arrow prev" aria-label="Previous step" disabled={n === 0} onClick={() => go(-1)}>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
+              </button>
+              <button type="button" className="g-arrow next" aria-label="Next step" disabled={isDone} onClick={() => go(1)}>
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>
+              </button>
+            </>
+          )}
         </div>
-        {d.gallery.length > 1 && (
+                {photos.length > 1 && (
           <div className="thumbs" role="group" aria-label="Photos">
-            {d.gallery.map((im, i) => (
-              <button key={im.src} type="button" aria-label={`Photo ${i + 1} of ${d.gallery.length}`} aria-current={i === n} onClick={() => setN(i)}>
+            {photos.map((im, i) => (
+              <button key={im.src} type="button" aria-label={i === photos.length - 1 ? 'Completed photo' : `Step ${i + 1} of ${photos.length - 1}`} aria-current={i === n} onClick={() => setN(i)}>
                 <Image src={im.src} width={im.width} height={im.height} alt="" sizes="92px" style={{ background: im.bg }} />
+                <span className="tn" aria-hidden="true">{i === last ? '✓' : i + 1}</span>
               </button>
             ))}
           </div>
@@ -92,17 +106,17 @@ function DrawerBody({ p, next, onSelect, onDiscuss }: { p: Project; next: Projec
 
       <div>
         <h2 className="blocks sm"><span>{p.title}</span></h2>
-        <p className="dr-sub">{d.sectorText} · {p.place}</p>
+        <p className="dr-sub">{p.sectorText} · {p.place}</p>
       </div>
-      <p className="lede">{d.summary}</p>
+      <p className="lede">{p.summary}</p>
       <dl className="titleblock facts">
         {facts.filter(([, v]) => v).map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}
       </dl>
       <div>
         <h3 className="minor">Scope</h3>
-        <ul className="scope">{d.scope.map(s => <li key={s}>{s}</li>)}</ul>
+        <ul className="scope">{p.scope.map(s => <li key={s}>{s}</li>)}</ul>
       </div>
-      <p className="role-note">{d.roleNote}</p>
+      <p className="role-note">{p.roleNote}</p>
       <div className="dr-actions">
         <Link className="btn btn-ink" href={`/projects/${p.slug}`}>Open project page</Link>
         <a className="chev" href="/#contact" onClick={onDiscuss}>Discuss a similar project <Chev /></a>

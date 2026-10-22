@@ -21,7 +21,6 @@ export function Logo() {
   );
 }
 
-/** variant "hero": sits on top of the hero. variant "bar": fixed bar that appears once the hero is done. */
 export default function Navbar({ variant }: { variant: 'hero' | 'bar' }) {
   const [open, setOpen] = useState(false);
   const [shown, setShown] = useState(variant === 'hero');

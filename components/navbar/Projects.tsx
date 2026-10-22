@@ -3,10 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState, type MouseEvent } from 'react';
-import ProjectDrawer from '../ProjectDrawer';
-import { projects, type Role } from '@/lib/site-data';
+import ProjectDrawer from '@/components/ProjectDrawer';
+import { roleLabel, type Project } from '@/lib/types';
 
-const roleLabel: Record<Role, string> = { direct: 'Direct award', sub: 'Subcontract', via: 'Via contractor' };
 const filters = [
   { key: 'all', label: 'All projects' },
   { key: 'resort', label: 'Resorts' },
@@ -15,15 +14,21 @@ const filters = [
 ] as const;
 type Filter = (typeof filters)[number]['key'];
 
+const numberWords = [
+  'Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten',
+  'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty',
+];
+const countWord = (n: number) => numberWords[n] ?? String(n); // 21+ shows as digits
+
 const Chip = ({ status, label }: { status: string; label: string }) => (
   <span className={`chip ${status}`}>{label} <i /></span>
 );
 
-export default function Projects() {
+export default function Projects({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<Filter>('all');
   const [ongoingOnly, setOngoingOnly] = useState(false);
   const [view, setView] = useState<'cards' | 'table'>('cards');
-    const [openSlug, setOpenSlug] = useState<string | null>(null);
+  const [openSlug, setOpenSlug] = useState<string | null>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
 
   const open = (e: MouseEvent<HTMLAnchorElement>, slug: string) => {
@@ -48,7 +53,7 @@ export default function Projects() {
       <div className="section-head">
         <h2 className="blocks" id="projects-h"><span>Project</span><span>register</span></h2>
         <p>
-          Fifteen projects, from resort lagoons to island powerhouses. Work before 2016 was delivered by our current team
+         {countWord(projects.length)} project{projects.length === 1 ? '' : 's'}, from resort lagoons to island powerhouses. Work before 2016 was delivered by our current team
           before incorporation, and every entry says whether we held the contract or worked under a main contractor.
         </p>
       </div>
@@ -105,7 +110,7 @@ export default function Projects() {
             <tbody>
               {list.map(p => (
                 <tr key={p.slug}>
-                <th scope="row"><Link href={`/projects/${p.slug}`} onClick={e => open(e, p.slug)}>{p.title}</Link></th>
+                  <th scope="row"><Link href={`/projects/${p.slug}`} onClick={e => open(e, p.slug)}>{p.title}</Link></th>
                   <td>{p.place}</td>
                   <td>{p.client}</td>
                   <td><span className={`role ${p.role}`}>{roleLabel[p.role]}</span></td>
@@ -119,7 +124,7 @@ export default function Projects() {
         </div>
       )}
 
-       <ProjectDrawer slug={openSlug} onSelect={setOpenSlug} onClose={() => { setOpenSlug(null); lastFocus.current?.focus(); }} />
+      <ProjectDrawer projects={projects} slug={openSlug} onSelect={setOpenSlug} onClose={() => { setOpenSlug(null); lastFocus.current?.focus(); }} />
     </section>
   );
 }
