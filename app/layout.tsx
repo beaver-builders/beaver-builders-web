@@ -33,6 +33,10 @@ export const metadata: Metadata = {
     default: `${site.name} | ${site.tagline}`,
     template: `%s | ${site.name}`,
   },
+    icons: {
+    icon: [{ url: "/brand/logo.png?v=3", type: "image/png" }],
+    apple: "/brand/logo.png?v=3",
+  },
   description: site.description,
   openGraph: {
     title: site.name,
