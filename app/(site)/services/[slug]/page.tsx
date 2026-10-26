@@ -13,7 +13,7 @@ type Params = {
   params: Promise<{ slug: string }>;
 };
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 export const runtime = "nodejs";
 
 export async function generateStaticParams() {

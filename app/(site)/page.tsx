@@ -12,7 +12,7 @@ import Careers from "@/components/Careers";
 import Contact from "@/components/navbar/Contact";
 import Projects from "@/components/navbar/Projects";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 export const runtime = "nodejs";
 
 export default async function Home() {

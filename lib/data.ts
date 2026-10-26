@@ -2,6 +2,7 @@ import 'server-only';
 import { sql } from 'drizzle-orm';
 import { getDb } from './db';
 import type { Catalog, Img, Project, Role, Service } from './types';
+import snapshot from '../lib/snapshot.json';
 
 const TIMEOUT_MS = 20_000;
 const TTL_MS = process.env.NODE_ENV === 'production' ? 30_000 : 2_000;
@@ -40,7 +41,7 @@ type Row = Record<string, unknown>;
 
 /** All published projects, in register order, with their gallery. */
 
-export const getProjects = memo('projects', async (): Promise<Project[]> => {
+const queryProjects = memo('projects', async (): Promise<Project[]> => {
   const db = getDb();
 
   const rows = (await db.execute(sql`
@@ -96,11 +97,18 @@ export const getProjects = memo('projects', async (): Promise<Project[]> => {
 });
 
 
+// Production reads the build-time snapshot, so no request ever touches the database.
+export const getProjects = async (): Promise<Project[]> =>
+  process.env.NODE_ENV === 'production' ? (snapshot.projects as Project[]) : queryProjects();
+
+export const getServices = async (): Promise<Service[]> =>
+  process.env.NODE_ENV === 'production' ? (snapshot.services as Service[]) : queryServices();
+
 export const getProject = async (slug: string) => (await getProjects()).find(p => p.slug === slug);
 
 /** All published services, in order, with their scope-of-works rows. */
 
-export const getServices = memo('services', async (): Promise<Service[]> => {
+const queryServices = memo('services', async (): Promise<Service[]> => {
   const db = getDb();
 
   const rows = (await db.execute(sql`
