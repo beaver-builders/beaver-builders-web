@@ -1,4 +1,4 @@
-export const site = {
+﻿export const site = {
   name: 'Beaver Builders',
   tagline: 'Build better, shape tomorrow.',
   description: 'Beaver Builders: building with purpose, precision and quality.',
@@ -7,7 +7,7 @@ export const site = {
   phone: '+960 778 3137',
   addressLines: ['7th Floor', 'Fusthulhaamaage Ameer Ahmed Magu 20030', 'Malé City', 'Maldives'],
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Fusthulhaamaage%2C+Ameer+Ahmed+Magu%2C+Mal%C3%A9',
-  logo: '/brand/logo.png',
+  logo: '/optimized/brand/logo.webp',
 };
 
 export const nav = [
@@ -62,3 +62,4 @@ export const careRoles = ['Site engineering', 'Project management', 'Quantity su
 
 // Service dropdown in the quote form
 export const serviceOptions = ['Not sure yet', 'Construction', 'Consultancy', 'Real estate', 'Equipment rental', 'Trading'];
+

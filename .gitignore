@@ -44,3 +44,5 @@ next-env.d.ts
 .cloudflare/
 
 .dev.vars*
+lib/content.backup.json
+lib/snapshot.backup.json

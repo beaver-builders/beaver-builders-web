@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -10,7 +10,7 @@ export function Logo() {
   return (
     <Link href="/" className="logo" aria-label={`${site.name}, home`}>
        <Image
-        src="/brand/logo.png"
+        src="/optimized/brand/logo.webp"
         alt="Beaver Builders"
         width={50}
         height={50}
@@ -57,8 +57,9 @@ export default function Navbar({ variant }: { variant: 'hero' | 'bar' }) {
       </button>
       <div className="nav-menu" id={menuId} hidden={!open}>
         {nav.map(l => <Link key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</Link>)}
-        <Link href="/#contact" onClick={() => setOpen(false)}>Request a quote →</Link>
+        <Link href="/#contact" onClick={() => setOpen(false)}>Request a quote â†’</Link>
       </div>
     </nav>
   );
 }
+

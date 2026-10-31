@@ -10,7 +10,7 @@ export default function History() {
     <section className="section wrap history-sec" id="about" aria-labelledby="about-h">
       <div className="history">
         <Image
-          src="/site-history.webp" width={1500} height={967} sizes="(max-width: 980px) 100vw, 45vw"
+          src="/optimized/site-history.webp" width={1500} height={967} sizes="(max-width: 980px) 100vw, 45vw"
           alt="An island workshop with a thatched roof, from the early years" style={{ background: '#808080' }}
         />
         <div className="history-copy">

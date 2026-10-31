@@ -1,11 +1,11 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 
 export default function About() {
   return (
     <section className="about-section">
 
-      {/* ───────────────── Founder ───────────────── */}
+      {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Founder â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="founder-section">
         <div className="about-container founder-grid">
 
@@ -18,7 +18,7 @@ export default function About() {
           </div>
 
           <div className="founder-message">
-            <span className="founder-mark">▸▸</span>
+            <span className="founder-mark">â–¸â–¸</span>
 
             <p>
               In the spirit of the beaver&apos;s unwavering dedication to each
@@ -46,7 +46,7 @@ export default function About() {
       </section>
 
 
-      {/* ───────────────── We Care ───────────────── */}
+      {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ We Care â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="care-section" id="about">
         <div className="about-container">
 
@@ -70,7 +70,7 @@ export default function About() {
 
             <div className="care-image">
               <Image
-                src="/images/care.jpg"
+                src="/optimized/site-care.webp"
                 alt="Hands holding a young plant"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -80,7 +80,7 @@ export default function About() {
             <div className="care-list">
 
               <article className="care-item">
-                <span className="care-icon">♧</span>
+                <span className="care-icon">â™§</span>
                 <div>
                   <h3>SUSTAINABILITY</h3>
                   <p>
@@ -91,7 +91,7 @@ export default function About() {
               </article>
 
               <article className="care-item">
-                <span className="care-icon">♿</span>
+                <span className="care-icon">â™¿</span>
                 <div>
                   <h3>PWD SUPPORT</h3>
                   <p>
@@ -110,7 +110,7 @@ export default function About() {
       </section>
 
 
-      {/* ───────────────── Careers ───────────────── */}
+      {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Careers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="team-section">
         <div className="about-container team-card">
 
@@ -148,7 +148,7 @@ export default function About() {
 
           <div className="team-image">
             <Image
-              src="/images/team.jpg"
+              src="/optimized/site-team.webp"
               alt="Beaver Builders construction team"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -159,7 +159,7 @@ export default function About() {
       </section>
 
 
-      {/* ───────────────── Contact ───────────────── */}
+      {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Contact â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="reach-section" id="contact">
 
         <div className="about-container reach-card">
@@ -282,3 +282,4 @@ export default function About() {
     </section>
   );
 }
+

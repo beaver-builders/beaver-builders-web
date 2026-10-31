@@ -18,7 +18,7 @@ export default function Careers() {
             Send us your CV
           </a>
         </div>
-        <Image src="/site-team.webp" width={3000} height={2000} sizes="(max-width: 980px) 100vw, 42vw"
+        <Image src="/optimized/site-team.webp" width={3000} height={2000} sizes="(max-width: 980px) 100vw, 42vw"
                alt="Two engineers in hard hats shaking hands on site" style={{ background: '#70706f' }} />
       </div>
     </section>

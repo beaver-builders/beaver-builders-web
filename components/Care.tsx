@@ -16,7 +16,7 @@ export default function Care() {
       </div>
       <div className="care">
         <div className="care-media">
-          <Image src="/site-care.webp" width={2400} height={1600} sizes="(max-width: 980px) 100vw, 50vw"
+          <Image src="/optimized/site-care.webp" width={2400} height={1600} sizes="(max-width: 980px) 100vw, 50vw"
                  alt="Hands holding a seedling" style={{ background: '#9a987a' }} />
         </div>
         <div className="care-panel">

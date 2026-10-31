@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next';
+﻿import type { Metadata, Viewport } from 'next';
 import { Oswald, IBM_Plex_Mono, Montserrat } from 'next/font/google';
 import './styles/index.css';
 import { site } from '../lib/site-data';
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
     icons: {
-    icon: [{ url: "/brand/logo.png?v=3", type: "image/png" }],
-    apple: "/brand/logo.png?v=3",
+    icon: [{ url: "/optimized/brand/logo.webp", type: "image/png" }],
+    apple: "/optimized/brand/logo.webp",
   },
   description: site.description,
   openGraph: {

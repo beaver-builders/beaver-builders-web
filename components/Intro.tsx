@@ -27,7 +27,7 @@ export default function Intro({ projectCount }: { projectCount?: number }) {
               <path d="M1 1l7 5-7 5z" fill="currentColor" />
               <path d="M12.5 1.5l6 4.5-6 4.5z" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
             </svg>
-                    </Link>
+            </Link>
 
           <dl className="titleblock">
             {items.map(f => (
@@ -38,7 +38,7 @@ export default function Intro({ projectCount }: { projectCount?: number }) {
 
         <div className="intro-media">
           <Image
-            src="/we-are -beaver-builders updated.jpg" width={2016} height={2118} sizes="(max-width: 980px) 100vw, 45vw"
+            src="/optimized/we-are -beaver-builders updated.webp" width={2016} height={2118} sizes="(max-width: 980px) 100vw, 45vw"
             alt="Beaver Builders hard hat held by a site worker in hi-vis" style={{ background: '#748a95' }}
           />
         </div>
